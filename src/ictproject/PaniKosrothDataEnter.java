@@ -56,18 +56,17 @@ public class PaniKosrothDataEnter extends javax.swing.JFrame {
 
         Name.setText("gabisa ko naam");
 
-        jTable2.setFont(new java.awt.Font("Preeti", 0, 11)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"!", null, null, null, null},
-                {"@", null, null, null, null},
-                {"#", null, null, null, null},
-                {"$", null, null, null, null},
-                {"%", null, null, null, null},
-                {"^", null, null, null, null},
-                {"&", null, null, null, null},
-                {"*", null, null, null, null},
-                {"(", null, null, null, null}
+                {"1", "1", null, null, null},
+                {"2", "2", null, null, null},
+                {"3", "3", null, null, null},
+                {"4", "4", null, null, null},
+                {"5", "5", null, null, null},
+                {"6", "6", null, null, null},
+                {"7", "7", null, null, null},
+                {"8", "8", null, null, null},
+                {"9", "9", null, null, null}
             },
             new String [] {
                 "S.No", "Ward No", "Pani ko sroth sukdai gayeko awasta", "Pokhari Count", "Remarks"
