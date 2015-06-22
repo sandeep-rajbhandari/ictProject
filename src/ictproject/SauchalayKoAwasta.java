@@ -39,7 +39,7 @@ public class SauchalayKoAwasta extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("gabisako Naam");
+        jLabel1.setText("गाविसको नाम ");
 
         gabisakoNaam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,13 +60,17 @@ public class SauchalayKoAwasta extends javax.swing.JFrame {
                 {"9", "9", null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "S.No", "Ward No", "asthayi charpi", "sthayi charpi", "charpi na bhako", "disa mukta gosana bhako/nabhakol", "bhayeko bhaye miti", "pisab alag garne gharduri", "pisab maal prayog garne", "bio gas charpi prayog garne", "duwa rahit chulho", "duwa rahit wada gosana", "remarks"
+                "सि.नं.", "वडा नं.", "अस्थायी चर्पी संख्या", "स्थायी चर्पी संख्या", "चर्पी नभएको संख्या", "भएको/ नभएको ", "भएको भए मिति", "पिसाव अलग गर्ने गरेका घरधुरी संख्या", "पिसाव मल प्रयोग गर्ने घरधुरी संख्या", "बायो ग्यास चर्पी प्रयोग गर्ने घरधुरी संख्याबायो ग्यास चर्पी प्रयोग गर्ने घरधुरी बायो ग्यास चर्पी प्रयोग गर्ने घरधुरी संख्य", "धुँवारहित चुल्हो भएको घर संख्या", "धुँवारहित वडा घोषण  भएको/नभएको", "कैफियत"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
             jTable1.getColumnModel().getColumn(1).setMaxWidth(50);
+            jTable1.getColumnModel().getColumn(5).setResizable(false);
+            jTable1.getColumnModel().getColumn(7).setResizable(false);
+            jTable1.getColumnModel().getColumn(11).setResizable(false);
+            jTable1.getColumnModel().getColumn(12).setResizable(false);
         }
 
         jButton1.setText("OK");
@@ -100,9 +104,9 @@ public class SauchalayKoAwasta extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(gabisakoNaam, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(37, 37, 37)
                 .addComponent(jButton1)
                 .addContainerGap(100, Short.MAX_VALUE))
         );

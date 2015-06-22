@@ -51,11 +51,11 @@ public class ReportGenerator {
          
           document.newPage();
           document.add(getParagraph(selected,"actual budget"));
-          document.add(actualBudget(selected));
+          document.add(actualBudget(selected,"actualBudget"));
           document.add( Chunk.NEWLINE );
           document.add( Chunk.NEWLINE );
           document.add(getParagraph(selected,"expected budget"));
-          document.add(actualBudget(selected));
+          document.add(actualBudget(selected,"expectedBudget"));
           
          document.setPageSize(PageSize.A4.rotate());
          document.newPage();
@@ -103,7 +103,7 @@ public class ReportGenerator {
           table.addCell(rs.getString("Remarks"));
  
       }
-      table.addCell(getNepaliPhrase("जम्मा"));
+      table.addCell(getNepaliPhrase("hDdf"));
       table.addCell("");
       table.addCell("");
       table.addCell((String.valueOf(getSum(name, "pokharicount","bidamanpanikosrot"))));
@@ -138,11 +138,11 @@ public class ReportGenerator {
       //STEP 5: Extract data from result set
       while(rs.next()){
           table.addCell(rs.getString("SNo"));
-          table.addCell(rs.getString("diseaseName"));
+          table.addCell(new Phrase(new Chunk(rs.getString("diseaseName"),fontNormal)));
           table.addCell(rs.getString("year6970"));
           table.addCell(rs.getString("year7071"));
           table.addCell(rs.getString("year7172"));
-          table.addCell(rs.getString("remarks"));
+          table.addCell(new Phrase(new Chunk(rs.getString("remarks"),fontNormal)));
  
       }
 
@@ -153,7 +153,7 @@ public class ReportGenerator {
         }
             return table;
 }
-    private  PdfPTable actualBudget(String name){
+    private  PdfPTable actualBudget(String name,String tableName){
         PdfPTable table = new PdfPTable(5);
             table.getDefaultCell().setBackgroundColor(BaseColor.GRAY);
           
@@ -168,18 +168,25 @@ public class ReportGenerator {
             try{
            Statement stmt = conn.createStatement();
       String sql;
-      sql = "SELECT * from  actualBudget where name='"+name+"'";
+      sql = "SELECT * from  "+tableName+" where name='"+name+"'";
       ResultSet rs = stmt.executeQuery(sql);
 
       //STEP 5: Extract data from result set
       while(rs.next()){
-          table.addCell(rs.getString("arthikBarsa"));
+          table.addCell(getNepaliPhrase(rs.getString("arthikBarsa")));
           table.addCell(rs.getString("khanePani"));
           table.addCell(rs.getString("sarSafai"));
           table.addCell(rs.getString("total"));
-          table.addCell(rs.getString("remarks"));
+          table.addCell(getNepaliPhrase(rs.getString("remarks")));
  
       }
+      table.addCell(getNepaliPhrase("hDdf"));//jamma
+                System.out.println("khanepani"+getSum(name, "khanePani", tableName));
+      table.addCell(String.valueOf(getSum(name, "khanePani", tableName)));
+      table.addCell(String.valueOf(getSum(name, "sarSafai", tableName)));
+      table.addCell(String.valueOf(getSum(name, "total", tableName)));
+      
+      table.addCell("");
 
         }  
         catch(SQLException se){
@@ -225,7 +232,7 @@ public class ReportGenerator {
             table.addCell(rs.getString("muslim"));
             table.addCell(rs.getString("anya"));
             table.addCell(rs.getString("jamma"));
-            table.addCell(rs.getString("remarks"));
+            table.addCell(new Phrase(new Chunk(rs.getString("remarks"),fontNormal)));
  
       }
 
@@ -234,6 +241,14 @@ public class ReportGenerator {
       //Handle errors for JDBC
       se.printStackTrace();
         }
+            table.addCell(getNepaliPhrase("hDdf"));//jamma
+            table.addCell("");
+            table.addCell(String.valueOf(getSum(name,"dalit","janajatianusarkogharduri")));
+            table.addCell(String.valueOf(getSum(name,"adiwsi","janajatianusarkogharduri")));
+            table.addCell(String.valueOf(getSum(name,"muslim","janajatianusarkogharduri")));
+            table.addCell(String.valueOf(getSum(name,"anya","janajatianusarkogharduri")));
+            table.addCell(String.valueOf(getSum(name,"jamma","janajatianusarkogharduri")));
+            table.addCell("");
         
        return table;
     }
@@ -306,6 +321,19 @@ public class ReportGenerator {
       //Handle errors for JDBC
       se.printStackTrace();
         }
+            table.addCell(getNepaliPhrase("hDdf"));
+            table.addCell("");
+            table.addCell(String.valueOf(getSum(name,"temporaryToilet","sauchalaykoawasta")));
+            table.addCell(String.valueOf(getSum(name,"permanentToilet","sauchalaykoawasta")));
+            table.addCell(String.valueOf(getSum(name,"noToilet","sauchalaykoawasta")));
+            table.addCell("");
+            table.addCell("");
+            table.addCell(String.valueOf(getSum(name,"urineSeperation","sauchalaykoawasta")));
+            table.addCell(String.valueOf(getSum(name,"urineManure","sauchalaykoawasta")));
+            table.addCell(String.valueOf(getSum(name,"bioGasUse","sauchalaykoawasta")));
+            table.addCell("");
+            table.addCell("");
+            table.addCell("");
         
        return table;
     }
@@ -327,9 +355,13 @@ public class ReportGenerator {
             }
             case "actual budget":{
               Paragraph para1=new Paragraph("# -s_ ut tLg jif{sf nflu uflj;n] vfg]kfgL tyf ;/;kmfO If]qdf 5'6fPsf] jh]6 ljj/0fM",fontNormal);
-              Paragraph para3=new Paragraph("uflj;sf] hDdf ;Defljt nufgL ? ",fontNormal);
+//              Paragraph para3=new Paragraph("uflj;sf] hDdf ;Defljt nufgL ? ",fontNormal);
+//              Paragraph para4=new Paragraph(getDistinctResult(name, "gabisaKoLagani", "actualBudget"));
+              Paragraph para5=new Paragraph();
+             para5.add(new Chunk("uflj;sf] hDdf ;Defljt nufgL ? ",fontNormal));
+             para5.add(new Chunk(String.valueOf(getDistinctResult(name, "gabisaKoLagani", "actualBudget"))));
                 paragraph.add(para1);
-                paragraph.add(para3);
+                paragraph.add(para5);
                 break;  
             }
             case "expected budget":{
@@ -361,6 +393,27 @@ public class ReportGenerator {
            Statement stmt = conn.createStatement();
       String sql;
       sql = "SELECT sum("+field+") from  "+tableName+" where name='"+name+"'";
+      ResultSet rs = stmt.executeQuery(sql);
+
+      //STEP 5: Extract data from result set
+      if(rs.next()){
+          if(rs.getString(1)!=null)
+            return Integer.parseInt(rs.getString(1));
+      }
+
+        }  
+        catch(SQLException se){
+      //Handle errors for JDBC
+      se.printStackTrace();
+        }  
+       return 0; 
+    }
+    
+    private int getDistinctResult(String name,String field,String tableName){
+      try{
+           Statement stmt = conn.createStatement();
+      String sql;
+      sql = "SELECT distinct("+field+") from  "+tableName+" where name='"+name+"'";
       ResultSet rs = stmt.executeQuery(sql);
 
       //STEP 5: Extract data from result set

@@ -5,8 +5,13 @@
  */
 package ictproject;
 
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -41,9 +46,9 @@ public class ActualBudget extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Gabisako Naam");
+        jLabel1.setText("गाविसको नाम ");
 
-        jLabel2.setText("Gabisako jamma lagani");
+        jLabel2.setText("गाविसको जम्मा सम्भावित लगानी रु ");
 
         gabisaKoJammaLaganiBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,12 +58,12 @@ public class ActualBudget extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"aba 69/70", null, null, null},
-                {"70/71", null, null, null},
-                {"71/72", null, null, null}
+                {"आ.व २०६९/७०	", null, null, null},
+                {"आ.व २०७०/७१	", null, null, null},
+                {"आ.व २०७१/७२	", null, null, null}
             },
             new String [] {
-                "arthik barsa", "khanepani(rupees)", "sarsafai(rupees)", "remarks"
+                "आर्थिक वर्ष", "खानेपानी(रुपैया)", "	सरसफाइ(रुपैया)", "कैफियत"
             }
         ) {
             Class[] types = new Class [] {
@@ -126,9 +131,13 @@ public class ActualBudget extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        List<String> year=new ArrayList<String>();
+        year.add("cf=j @)^(÷&)");
+        year.add("cf=j @)&)÷&!");
+        year.add("cf=j @)&!÷&@");
         DefaultTableModel model=(DefaultTableModel)jTable1.getModel();
         String gabisaName=gabisaKoNaamBox.getText();
-        Double gabisaKoLagani=Double.parseDouble(gabisaKoJammaLaganiBox.getText());
+        Double gabisaKoLagani=Double.parseDouble(converter(gabisaKoJammaLaganiBox.getText()));
         for(int i=0;i<3;i++){
         try{
         PreparedStatement updateemp = JDBCConnection.conn.prepareStatement
@@ -136,7 +145,7 @@ public class ActualBudget extends javax.swing.JFrame {
          Double khanepani=model.getValueAt(i,1)==null?0:Double.parseDouble(model.getValueAt(i,1).toString());
          Double sarSafai=model.getValueAt(i,2)==null?0:Double.parseDouble(model.getValueAt(i,2).toString());
         
-         updateemp.setString(1,model.getValueAt(i,0)==null?"":model.getValueAt(i,0).toString());
+         updateemp.setString(1,year.get(i));
         updateemp.setString(2,model.getValueAt(i,3)==null?"":model.getValueAt(i,3).toString());
         updateemp.setString(3,gabisaName);
         updateemp.setDouble(4,khanepani);
@@ -157,7 +166,25 @@ public class ActualBudget extends javax.swing.JFrame {
    }}
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
+ 
+    public String converter(String actualData){
+   
+   Map<String,String> mpper=new HashMap<String, String>();
+   mpper.put("१","1");
+   mpper.put("२","2");
+   mpper.put("३","3");
+   mpper.put("४","4");
+   mpper.put("५","5");
+   mpper.put("६","6");
+   mpper.put("७","7");
+   mpper.put("८","8");
+   mpper.put("९","9");
+   mpper.put("०","0");
+   for(String key:mpper.keySet()){
+       actualData=actualData.replace(key, mpper.get(key));
+   }
+    return actualData;
+    }
     /**
      * @param args the command line arguments
      */

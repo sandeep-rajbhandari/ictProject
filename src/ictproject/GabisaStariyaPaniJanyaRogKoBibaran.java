@@ -39,7 +39,7 @@ public class GabisaStariyaPaniJanyaRogKoBibaran extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("gabisako naam");
+        jLabel1.setText("गाविसको नाम ");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -56,7 +56,7 @@ public class GabisaStariyaPaniJanyaRogKoBibaran extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "S.No", "rog ko naam", "year 69/70", "year 70/71", "year 71/72", "Remarks"
+                "सि.नं.", "रोगको नाम", "बर्ष(२०६९/७०)", "बर्ष(२०७०/७१)", "बर्ष(२०७१/७२)", "कैफियत"
             }
         ) {
             Class[] types = new Class [] {
@@ -70,10 +70,6 @@ public class GabisaStariyaPaniJanyaRogKoBibaran extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
-            jTable1.getColumnModel().getColumn(2).setMaxWidth(70);
-            jTable1.getColumnModel().getColumn(3).setMaxWidth(70);
-            jTable1.getColumnModel().getColumn(4).setMaxWidth(70);
-            jTable1.getColumnModel().getColumn(5).setMaxWidth(70);
         }
 
         jButton1.setText("OK");

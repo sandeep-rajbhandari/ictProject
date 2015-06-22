@@ -43,12 +43,12 @@ public class ExpectedBudget extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"aba 69/70", null, null, null},
-                {"70/71", null, null, null},
-                {"71/72", null, null, null}
+                {"आ.व २०६९/७०	", null, null, null},
+                {"आ.व २०७०/७१	", null, null, null},
+                {"आ.व २०७१÷७२	", null, null, null}
             },
             new String [] {
-                "arthik barsa", "khanepani(rupees)", "sarsafai(rupees)", "remarks"
+                "आर्थिक वर्ष", "खानेपानी(रुपैया)", "सरसफाइ(रुपैया)", "कैफियत"
             }
         ) {
             Class[] types = new Class [] {
@@ -61,7 +61,7 @@ public class ExpectedBudget extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel2.setText("Gabisako sambhabit lagani");
+        jLabel2.setText("गाविसको जम्मा सम्भावित लगानी रु ");
 
         gabisaKoSambhabitLaganiBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,7 +69,7 @@ public class ExpectedBudget extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Gabisako Naam");
+        jLabel1.setText("गाविसको नाम ");
 
         jButton1.setText("OK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

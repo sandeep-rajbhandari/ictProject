@@ -6,25 +6,17 @@
 package ictproject;
 
 import java.io.FileOutputStream;
-import java.io.IOException;
  
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
-import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.BaseFont;
-import com.itextpdf.text.pdf.FontSelector;
-import com.itextpdf.text.pdf.PdfObject;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfString;
 import com.itextpdf.text.pdf.PdfWriter;
-import java.io.File;
-import java.lang.reflect.Method;
-import javaapplication1.Preeti;
+
 
 
 /**
@@ -42,28 +34,27 @@ public class ICTProject {
                         
             Document document = new Document();
             String encoding = "Identity-H";
-            Font fontNormal = FontFactory.getFont(("C:/Users/Sandeep/Downloads/Preeti_0.ttf"), encoding,BaseFont.EMBEDDED, 8, Font.NORMAL);
-            PdfWriter.getInstance(document, new FileOutputStream("test.pdf"));
+            Font fontNormal = FontFactory.getFont(("C:/Users/Sandeep/Downloads/arialuni.ttf"), encoding,BaseFont.EMBEDDED, 8, Font.NORMAL);
+            PdfWriter.getInstance(document, new FileOutputStream("E:/test.pdf"));
             
             document.open();
  
             Chunk chunkEnglish = new Chunk("Hello World " + "\n", fontNormal);
-             Preeti preeti=new Preeti();
-            Chunk chunkBrazil = new Chunk("नेपाल" + "\n", fontNormal);
+//            file.temp=new StringBuffer("नेपाल मेरो देश");
+            
+//            Chunk chunkBrazil = new Chunk(new Preeti().converter() + "\n", fontNormal);
  
             PdfPTable table = new PdfPTable(2);
             table.addCell("Locale");
             table.addCell("Translated Text");
  
             PdfPCell cellEnglish = new PdfPCell(new Phrase(chunkEnglish));
-            table.addCell(new PdfPCell(new Phrase(new Chunk(new String("नेपालि".getBytes(),"UTF-8")))));
+            table.addCell(new PdfPCell(new Phrase(new Chunk("नेपाल मेरो देश",fontNormal))));
             table.addCell(cellEnglish);
  
-            PdfPCell cellBrazil = new PdfPCell(new Phrase(chunkBrazil));
-             PdfObject line=new PdfString("नेपालि", PdfObject.TEXT_UNICODE);;
-             System.out.println("line"+line);
-            table.addCell(new PdfPCell(new Phrase(PdfObject.TEXT_UNICODE)));
-            table.addCell(cellBrazil);
+//            PdfPCell cellBrazil = new PdfPCell(new Phrase(chunkBrazil));
+            table.addCell(new Phrase(new Chunk("h'dnf",fontNormal)));
+//            table.addCell(cellBrazil);
  
             document.add(table);
             document.close();
@@ -71,16 +62,16 @@ public class ICTProject {
             System.out.println("PDF generation complete....");
      
           } catch (Exception e) {
-            System.out.println("Error occurred while generating PDF" + e.getMessage());
+            System.out.println("Error occurred while generating PDF" + e);
             e.printStackTrace();
           }
-  JDBCConnection connection=new JDBCConnection();
-    connection.getConnection();
+        JDBCConnection connection=new JDBCConnection();
+        connection.getConnection();
         JDBCConnection.populate();
         MainSelectionPage mainSelectionPage=new MainSelectionPage();
-       mainSelectionPage.setVisible(true);
-    }
-    
+        mainSelectionPage.setVisible(true);
+   }
+  
 }
     
     

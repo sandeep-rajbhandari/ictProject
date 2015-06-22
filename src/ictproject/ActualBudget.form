@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -72,14 +72,14 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Gabisako Naam"/>
+        <Property name="text" type="java.lang.String" value="&#x917;&#x93e;&#x935;&#x93f;&#x938;&#x915;&#x94b; &#x928;&#x93e;&#x92e; "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="gabisaKoNaamBox">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Gabisako jamma lagani"/>
+        <Property name="text" type="java.lang.String" value="&#x917;&#x93e;&#x935;&#x93f;&#x938;&#x915;&#x94b; &#x91c;&#x92e;&#x94d;&#x92e;&#x93e; &#x938;&#x92e;&#x94d;&#x92d;&#x93e;&#x935;&#x93f;&#x924; &#x932;&#x917;&#x93e;&#x928;&#x940; &#x930;&#x941; "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="gabisaKoJammaLaganiBox">
@@ -98,14 +98,14 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="3">
-                <Column editable="true" title="arthik barsa" type="java.lang.String">
-                  <Data value="aba 69/70"/>
-                  <Data value="70/71"/>
-                  <Data value="71/72"/>
+                <Column editable="true" title="&#x906;&#x930;&#x94d;&#x925;&#x93f;&#x915; &#x935;&#x930;&#x94d;&#x937;" type="java.lang.String">
+                  <Data value="&#x906;.&#x935; &#x968;&#x966;&#x96c;&#x96f;/&#x96d;&#x966;&#x9;"/>
+                  <Data value="&#x906;.&#x935; &#x968;&#x966;&#x96d;&#x966;/&#x96d;&#x967;&#x9;"/>
+                  <Data value="&#x906;.&#x935; &#x968;&#x966;&#x96d;&#x967;/&#x96d;&#x968;&#x9;"/>
                 </Column>
-                <Column editable="true" title="khanepani(rupees)" type="java.lang.Long"/>
-                <Column editable="true" title="sarsafai(rupees)" type="java.lang.Long"/>
-                <Column editable="true" title="remarks" type="java.lang.String"/>
+                <Column editable="true" title="&#x916;&#x93e;&#x928;&#x947;&#x92a;&#x93e;&#x928;&#x940;(&#x930;&#x941;&#x92a;&#x948;&#x92f;&#x93e;)" type="java.lang.Long"/>
+                <Column editable="true" title="&#x9;&#x938;&#x930;&#x938;&#x92b;&#x93e;&#x907;(&#x930;&#x941;&#x92a;&#x948;&#x92f;&#x93e;)" type="java.lang.Long"/>
+                <Column editable="true" title="&#x915;&#x948;&#x92b;&#x93f;&#x92f;&#x924;" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
