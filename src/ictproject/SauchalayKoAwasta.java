@@ -60,16 +60,23 @@ public class SauchalayKoAwasta extends javax.swing.JFrame {
                 {"9", "9", null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "सि.नं.", "वडा नं.", "अस्थायी चर्पी संख्या", "स्थायी चर्पी संख्या", "चर्पी नभएको संख्या", "भएको/ नभएको ", "भएको भए मिति", "पिसाव अलग गर्ने गरेका घरधुरी संख्या", "पिसाव मल प्रयोग गर्ने घरधुरी संख्या", "बायो ग्यास चर्पी प्रयोग गर्ने घरधुरी संख्याबायो ग्यास चर्पी प्रयोग गर्ने घरधुरी बायो ग्यास चर्पी प्रयोग गर्ने घरधुरी संख्य", "धुँवारहित चुल्हो भएको घर संख्या", "धुँवारहित वडा घोषण  भएको/नभएको", "कैफियत"
+                "<html>सि.<br>नं. ", "<html>वडा नं.<br", "<html>अस्थायी चर्पी <br>संख्या", "<html>स्थायी चर्पी संख्या<br>", "<html>चर्पी नभएको संख्या<br>", "<html>खुल्ला दिसामूक्त घोषण<br>भएको/नभएको ", "<html>खुल्ला दिसामूक्त घोषण<br>भएको भए मिति", "<html>पिसाव अलग गर्ने <br>घरधुरी  संख्या", "<html>पिसाव मल प्रयोग <br>गर्ने घरधुरी  संख्या", "<html>बायो ग्यास चर्पी <br>प्रयोग गर्ने घरधुरी ", "<html>धुँवारहित चुल्हो<br> भएको घर संख्या", "<html>धुँवारहित वडा <br>घोषण  भएको/नभएको", "कैफियत"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Long.class, java.lang.Long.class, java.lang.Long.class, java.lang.Object.class, java.lang.Object.class, java.lang.Long.class, java.lang.Long.class, java.lang.Long.class, java.lang.Long.class, java.lang.Long.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jTable1.setDragEnabled(true);
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
             jTable1.getColumnModel().getColumn(1).setMaxWidth(50);
             jTable1.getColumnModel().getColumn(5).setResizable(false);
-            jTable1.getColumnModel().getColumn(7).setResizable(false);
-            jTable1.getColumnModel().getColumn(11).setResizable(false);
             jTable1.getColumnModel().getColumn(12).setResizable(false);
         }
 
@@ -105,8 +112,8 @@ public class SauchalayKoAwasta extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(gabisakoNaam, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addContainerGap(100, Short.MAX_VALUE))
         );

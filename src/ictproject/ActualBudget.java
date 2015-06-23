@@ -167,7 +167,7 @@ public class ActualBudget extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
  
-    public String converter(String actualData){
+    public static String converter(String actualData){
    
    Map<String,String> mpper=new HashMap<String, String>();
    mpper.put("१","1");

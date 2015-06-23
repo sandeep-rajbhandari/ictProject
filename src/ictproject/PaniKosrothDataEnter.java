@@ -56,24 +56,25 @@ public class PaniKosrothDataEnter extends javax.swing.JFrame {
 
         Name.setText("गाविसको नाम ");
 
+        jTable2.setFont(new java.awt.Font("Mangal", 0, 11)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "1", null, null, null},
-                {"2", "2", null, null, null},
-                {"3", "3", null, null, null},
-                {"4", "4", null, null, null},
-                {"5", "5", null, null, null},
-                {"6", "6", null, null, null},
-                {"7", "7", null, null, null},
-                {"8", "8", null, null, null},
-                {"9", "9", null, null, null}
+                {"1",  new Long(1), null, null, null},
+                {"2",  new Long(2), null, null, null},
+                {"3",  new Long(3), null, null, null},
+                {"4",  new Long(4), null, null, null},
+                {"5",  new Long(5), null, null, null},
+                {"6",  new Long(6), null, null, null},
+                {"7",  new Long(7), null, null, null},
+                {"8",  new Long(8), null, null, null},
+                {"9",  new Long(9), null, null, null}
             },
             new String [] {
                 "सि.नं.", "वडा नं.", "पानी श्रोत सुक्दै गएको अवस्था (अति धेरै–५,धेरै–४,ठिकै–३, कम–२,छैन–१)	 ", "पोखरीको संख्या	", "कैफियत"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Long.class, java.lang.Long.class, java.lang.Long.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -145,7 +146,7 @@ public class PaniKosrothDataEnter extends javax.swing.JFrame {
         updateemp.setInt(2,Integer.parseInt(model.getValueAt(i,1).toString()));
         updateemp.setInt(3,model.getValueAt(i,2)==null?0:Integer.parseInt(model.getValueAt(i,2).toString()));
         updateemp.setInt(4,model.getValueAt(i,3)==null?0:Integer.parseInt(model.getValueAt(i,3).toString()));
-        updateemp.setString(5,model.getValueAt(i,3)==null?"":model.getValueAt(i,3).toString());
+        updateemp.setString(5,model.getValueAt(i,4)==null?"":model.getValueAt(i,4).toString());
         updateemp.setString(6,gabisaName);
         
         updateemp.executeUpdate();

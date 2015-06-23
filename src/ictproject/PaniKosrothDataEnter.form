@@ -101,6 +101,9 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="jTable2">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Mangal" size="11" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="5" rowCount="9">
                 <Column editable="true" title="&#x938;&#x93f;.&#x928;&#x902;." type="java.lang.String">
@@ -114,7 +117,7 @@
                   <Data value="8"/>
                   <Data value="9"/>
                 </Column>
-                <Column editable="true" title="&#x935;&#x921;&#x93e; &#x928;&#x902;." type="java.lang.String">
+                <Column editable="true" title="&#x935;&#x921;&#x93e; &#x928;&#x902;." type="java.lang.Long">
                   <Data value="1"/>
                   <Data value="2"/>
                   <Data value="3"/>
@@ -125,9 +128,9 @@
                   <Data value="8"/>
                   <Data value="9"/>
                 </Column>
-                <Column editable="true" title="&#x92a;&#x93e;&#x928;&#x940; &#x936;&#x94d;&#x930;&#x94b;&#x924; &#x938;&#x941;&#x915;&#x94d;&#x926;&#x948; &#x917;&#x90f;&#x915;&#x94b; &#x905;&#x935;&#x938;&#x94d;&#x925;&#x93e; (&#x905;&#x924;&#x93f; &#x927;&#x947;&#x930;&#x948;&#x2013;&#x96b;,&#x927;&#x947;&#x930;&#x948;&#x2013;&#x96a;,&#x920;&#x93f;&#x915;&#x948;&#x2013;&#x969;, &#x915;&#x92e;&#x2013;&#x968;,&#x91b;&#x948;&#x928;&#x2013;&#x967;)&#x9; " type="java.lang.String"/>
-                <Column editable="true" title="&#x92a;&#x94b;&#x916;&#x930;&#x940;&#x915;&#x94b; &#x938;&#x902;&#x916;&#x94d;&#x92f;&#x93e;&#x9;" type="java.lang.String"/>
-                <Column editable="true" title="&#x915;&#x948;&#x92b;&#x93f;&#x92f;&#x924;" type="java.lang.String"/>
+                <Column editable="true" title="&#x92a;&#x93e;&#x928;&#x940; &#x936;&#x94d;&#x930;&#x94b;&#x924; &#x938;&#x941;&#x915;&#x94d;&#x926;&#x948; &#x917;&#x90f;&#x915;&#x94b; &#x905;&#x935;&#x938;&#x94d;&#x925;&#x93e; (&#x905;&#x924;&#x93f; &#x927;&#x947;&#x930;&#x948;&#x2013;&#x96b;,&#x927;&#x947;&#x930;&#x948;&#x2013;&#x96a;,&#x920;&#x93f;&#x915;&#x948;&#x2013;&#x969;, &#x915;&#x92e;&#x2013;&#x968;,&#x91b;&#x948;&#x928;&#x2013;&#x967;)&#x9; " type="java.lang.Long"/>
+                <Column editable="true" title="&#x92a;&#x94b;&#x916;&#x930;&#x940;&#x915;&#x94b; &#x938;&#x902;&#x916;&#x94d;&#x92f;&#x93e;&#x9;" type="java.lang.Long"/>
+                <Column editable="true" title="&#x915;&#x948;&#x92b;&#x93f;&#x92f;&#x924;" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

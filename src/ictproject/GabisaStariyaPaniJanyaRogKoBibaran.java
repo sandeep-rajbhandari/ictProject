@@ -124,7 +124,7 @@ public class GabisaStariyaPaniJanyaRogKoBibaran extends javax.swing.JFrame {
         ("insert into  panijanyarogkabibaran(SNo,diseaseName,year6970,year7071,year7172,remarks,name) values(?,?,?,?,?,?,?)");
         
         updateemp.setInt(1,Integer.parseInt(model.getValueAt(i,0).toString()));
-        updateemp.setString(2,model.getValueAt(i,1)==null?"":model.getValueAt(i,3).toString());
+        updateemp.setString(2,model.getValueAt(i,1)==null?"":model.getValueAt(i,1).toString());
         updateemp.setInt(3,model.getValueAt(i,2)==null?0:Integer.parseInt(model.getValueAt(i,2).toString()));
         updateemp.setInt(4,model.getValueAt(i,3)==null?0:Integer.parseInt(model.getValueAt(i,3).toString()));
         updateemp.setInt(5,model.getValueAt(i,4)==null?0:Integer.parseInt(model.getValueAt(i,4).toString()));

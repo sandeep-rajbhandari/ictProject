@@ -7,6 +7,8 @@ package ictproject;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -14,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Sandeep
  */
 public class ExpectedBudget extends javax.swing.JFrame {
+    
 
     /**
      * Creates new form ExpectedBudget
@@ -41,18 +44,19 @@ public class ExpectedBudget extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTable1.setFont(new java.awt.Font("Mangal", 0, 11)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"आ.व २०६९/७०	", null, null, null},
                 {"आ.व २०७०/७१	", null, null, null},
-                {"आ.व २०७१÷७२	", null, null, null}
+                {"आ.व २०७१/७२", null, null, null}
             },
             new String [] {
                 "आर्थिक वर्ष", "खानेपानी(रुपैया)", "सरसफाइ(रुपैया)", "कैफियत"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Long.class, java.lang.Long.class, java.lang.String.class
+                java.lang.String.class, java.lang.Long.class, java.lang.Long.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -126,17 +130,21 @@ public class ExpectedBudget extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        List<String> year=new ArrayList<String>();
+        year.add("cf=j @)^(÷&)");
+        year.add("cf=j @)&)÷&!");
+        year.add("cf=j @)&!÷&@");
          DefaultTableModel model=(DefaultTableModel)jTable1.getModel();
         String gabisaName=gabisaKoNaamBox.getText();
-        Double gabisaKoLagani=Double.parseDouble(gabisaKoSambhabitLaganiBox.getText());
+        Double gabisaKoLagani=Double.parseDouble(ActualBudget.converter(gabisaKoSambhabitLaganiBox.getText()));
         for(int i=0;i<3;i++){
         try{
         PreparedStatement updateemp = JDBCConnection.conn.prepareStatement
-        ("insert into actualBudget(arthikBarsa,remarks,name,khanePani,sarSafai,gabisaKoLagani,total) values(?,?,?,?,?,?,?)");
+        ("insert into expectedBudget(arthikBarsa,remarks,name,khanePani,sarSafai,gabisaKoLagani,total) values(?,?,?,?,?,?,?)");
          Double khanepani=model.getValueAt(i,2)==null?0:Double.parseDouble(model.getValueAt(i,2).toString());
          Double sarSafai=model.getValueAt(i,2)==null?0:Double.parseDouble(model.getValueAt(i,2).toString());
         
-         updateemp.setString(1,model.getValueAt(i,0)==null?"":model.getValueAt(i,0).toString());
+         updateemp.setString(1,year.get(i));
         updateemp.setString(2,model.getValueAt(i,3)==null?"":model.getValueAt(i,3).toString());
         updateemp.setString(3,gabisaName);
         updateemp.setDouble(4,khanepani);

@@ -50,8 +50,8 @@
                   <Component id="gabisakoNaam" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="174" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="205" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="100" max="32767" attributes="0"/>
           </Group>
@@ -80,7 +80,7 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="13" rowCount="9">
-                <Column editable="true" title="&#x938;&#x93f;.&#x928;&#x902;." type="java.lang.Object">
+                <Column editable="true" title="&lt;html&gt;&#x938;&#x93f;.&lt;br&gt;&#x928;&#x902;. " type="java.lang.Object">
                   <Data value="1"/>
                   <Data value="2"/>
                   <Data value="3"/>
@@ -91,7 +91,7 @@
                   <Data value="8"/>
                   <Data value="9"/>
                 </Column>
-                <Column editable="true" title="&#x935;&#x921;&#x93e; &#x928;&#x902;." type="java.lang.Object">
+                <Column editable="true" title="&lt;html&gt;&#x935;&#x921;&#x93e; &#x928;&#x902;.&lt;br" type="java.lang.Object">
                   <Data value="1"/>
                   <Data value="2"/>
                   <Data value="3"/>
@@ -102,16 +102,16 @@
                   <Data value="8"/>
                   <Data value="9"/>
                 </Column>
-                <Column editable="true" title="&#x905;&#x938;&#x94d;&#x925;&#x93e;&#x92f;&#x940; &#x91a;&#x930;&#x94d;&#x92a;&#x940; &#x938;&#x902;&#x916;&#x94d;&#x92f;&#x93e;" type="java.lang.Object"/>
-                <Column editable="true" title="&#x938;&#x94d;&#x925;&#x93e;&#x92f;&#x940; &#x91a;&#x930;&#x94d;&#x92a;&#x940; &#x938;&#x902;&#x916;&#x94d;&#x92f;&#x93e;" type="java.lang.Object"/>
-                <Column editable="true" title="&#x91a;&#x930;&#x94d;&#x92a;&#x940; &#x928;&#x92d;&#x90f;&#x915;&#x94b; &#x938;&#x902;&#x916;&#x94d;&#x92f;&#x93e;" type="java.lang.Object"/>
-                <Column editable="true" title="&#x92d;&#x90f;&#x915;&#x94b;/ &#x928;&#x92d;&#x90f;&#x915;&#x94b; " type="java.lang.Object"/>
-                <Column editable="true" title="&#x92d;&#x90f;&#x915;&#x94b; &#x92d;&#x90f; &#x92e;&#x93f;&#x924;&#x93f;" type="java.lang.Object"/>
-                <Column editable="true" title="&#x92a;&#x93f;&#x938;&#x93e;&#x935; &#x905;&#x932;&#x917; &#x917;&#x930;&#x94d;&#x928;&#x947; &#x917;&#x930;&#x947;&#x915;&#x93e; &#x918;&#x930;&#x927;&#x941;&#x930;&#x940; &#x938;&#x902;&#x916;&#x94d;&#x92f;&#x93e;" type="java.lang.Object"/>
-                <Column editable="true" title="&#x92a;&#x93f;&#x938;&#x93e;&#x935; &#x92e;&#x932; &#x92a;&#x94d;&#x930;&#x92f;&#x94b;&#x917; &#x917;&#x930;&#x94d;&#x928;&#x947; &#x918;&#x930;&#x927;&#x941;&#x930;&#x940; &#x938;&#x902;&#x916;&#x94d;&#x92f;&#x93e;" type="java.lang.Object"/>
-                <Column editable="true" title="&#x92c;&#x93e;&#x92f;&#x94b; &#x917;&#x94d;&#x92f;&#x93e;&#x938; &#x91a;&#x930;&#x94d;&#x92a;&#x940; &#x92a;&#x94d;&#x930;&#x92f;&#x94b;&#x917; &#x917;&#x930;&#x94d;&#x928;&#x947; &#x918;&#x930;&#x927;&#x941;&#x930;&#x940; &#x938;&#x902;&#x916;&#x94d;&#x92f;&#x93e;&#x92c;&#x93e;&#x92f;&#x94b; &#x917;&#x94d;&#x92f;&#x93e;&#x938; &#x91a;&#x930;&#x94d;&#x92a;&#x940; &#x92a;&#x94d;&#x930;&#x92f;&#x94b;&#x917; &#x917;&#x930;&#x94d;&#x928;&#x947; &#x918;&#x930;&#x927;&#x941;&#x930;&#x940; &#x92c;&#x93e;&#x92f;&#x94b; &#x917;&#x94d;&#x92f;&#x93e;&#x938; &#x91a;&#x930;&#x94d;&#x92a;&#x940; &#x92a;&#x94d;&#x930;&#x92f;&#x94b;&#x917; &#x917;&#x930;&#x94d;&#x928;&#x947; &#x918;&#x930;&#x927;&#x941;&#x930;&#x940; &#x938;&#x902;&#x916;&#x94d;&#x92f;" type="java.lang.Object"/>
-                <Column editable="true" title="&#x927;&#x941;&#x901;&#x935;&#x93e;&#x930;&#x939;&#x93f;&#x924; &#x91a;&#x941;&#x932;&#x94d;&#x939;&#x94b; &#x92d;&#x90f;&#x915;&#x94b; &#x918;&#x930; &#x938;&#x902;&#x916;&#x94d;&#x92f;&#x93e;" type="java.lang.Object"/>
-                <Column editable="true" title="&#x927;&#x941;&#x901;&#x935;&#x93e;&#x930;&#x939;&#x93f;&#x924; &#x935;&#x921;&#x93e; &#x918;&#x94b;&#x937;&#x923;  &#x92d;&#x90f;&#x915;&#x94b;/&#x928;&#x92d;&#x90f;&#x915;&#x94b;" type="java.lang.Object"/>
+                <Column editable="true" title="&lt;html&gt;&#x905;&#x938;&#x94d;&#x925;&#x93e;&#x92f;&#x940; &#x91a;&#x930;&#x94d;&#x92a;&#x940; &lt;br&gt;&#x938;&#x902;&#x916;&#x94d;&#x92f;&#x93e;" type="java.lang.Long"/>
+                <Column editable="true" title="&lt;html&gt;&#x938;&#x94d;&#x925;&#x93e;&#x92f;&#x940; &#x91a;&#x930;&#x94d;&#x92a;&#x940; &#x938;&#x902;&#x916;&#x94d;&#x92f;&#x93e;&lt;br&gt;" type="java.lang.Long"/>
+                <Column editable="true" title="&lt;html&gt;&#x91a;&#x930;&#x94d;&#x92a;&#x940; &#x928;&#x92d;&#x90f;&#x915;&#x94b; &#x938;&#x902;&#x916;&#x94d;&#x92f;&#x93e;&lt;br&gt;" type="java.lang.Long"/>
+                <Column editable="true" title="&lt;html&gt;&#x916;&#x941;&#x932;&#x94d;&#x932;&#x93e; &#x926;&#x93f;&#x938;&#x93e;&#x92e;&#x942;&#x915;&#x94d;&#x924; &#x918;&#x94b;&#x937;&#x923;&lt;br&gt;&#x92d;&#x90f;&#x915;&#x94b;/&#x928;&#x92d;&#x90f;&#x915;&#x94b; " type="java.lang.Object"/>
+                <Column editable="true" title="&lt;html&gt;&#x916;&#x941;&#x932;&#x94d;&#x932;&#x93e; &#x926;&#x93f;&#x938;&#x93e;&#x92e;&#x942;&#x915;&#x94d;&#x924; &#x918;&#x94b;&#x937;&#x923;&lt;br&gt;&#x92d;&#x90f;&#x915;&#x94b; &#x92d;&#x90f; &#x92e;&#x93f;&#x924;&#x93f;" type="java.lang.Object"/>
+                <Column editable="true" title="&lt;html&gt;&#x92a;&#x93f;&#x938;&#x93e;&#x935; &#x905;&#x932;&#x917; &#x917;&#x930;&#x94d;&#x928;&#x947; &lt;br&gt;&#x918;&#x930;&#x927;&#x941;&#x930;&#x940;  &#x938;&#x902;&#x916;&#x94d;&#x92f;&#x93e;" type="java.lang.Long"/>
+                <Column editable="true" title="&lt;html&gt;&#x92a;&#x93f;&#x938;&#x93e;&#x935; &#x92e;&#x932; &#x92a;&#x94d;&#x930;&#x92f;&#x94b;&#x917; &lt;br&gt;&#x917;&#x930;&#x94d;&#x928;&#x947; &#x918;&#x930;&#x927;&#x941;&#x930;&#x940;  &#x938;&#x902;&#x916;&#x94d;&#x92f;&#x93e;" type="java.lang.Long"/>
+                <Column editable="true" title="&lt;html&gt;&#x92c;&#x93e;&#x92f;&#x94b; &#x917;&#x94d;&#x92f;&#x93e;&#x938; &#x91a;&#x930;&#x94d;&#x92a;&#x940; &lt;br&gt;&#x92a;&#x94d;&#x930;&#x92f;&#x94b;&#x917; &#x917;&#x930;&#x94d;&#x928;&#x947; &#x918;&#x930;&#x927;&#x941;&#x930;&#x940; " type="java.lang.Long"/>
+                <Column editable="true" title="&lt;html&gt;&#x927;&#x941;&#x901;&#x935;&#x93e;&#x930;&#x939;&#x93f;&#x924; &#x91a;&#x941;&#x932;&#x94d;&#x939;&#x94b;&lt;br&gt; &#x92d;&#x90f;&#x915;&#x94b; &#x918;&#x930; &#x938;&#x902;&#x916;&#x94d;&#x92f;&#x93e;" type="java.lang.Long"/>
+                <Column editable="true" title="&lt;html&gt;&#x927;&#x941;&#x901;&#x935;&#x93e;&#x930;&#x939;&#x93f;&#x924; &#x935;&#x921;&#x93e; &lt;br&gt;&#x918;&#x94b;&#x937;&#x923;  &#x92d;&#x90f;&#x915;&#x94b;/&#x928;&#x92d;&#x90f;&#x915;&#x94b;" type="java.lang.Long"/>
                 <Column editable="true" title="&#x915;&#x948;&#x92b;&#x93f;&#x92f;&#x924;" type="java.lang.Object"/>
               </Table>
             </Property>
@@ -152,11 +152,6 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -172,7 +167,12 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>
@@ -184,6 +184,7 @@
                 </Column>
               </TableColumnModel>
             </Property>
+            <Property name="dragEnabled" type="boolean" value="true"/>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>

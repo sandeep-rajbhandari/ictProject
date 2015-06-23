@@ -9,6 +9,7 @@ import com.itextpdf.text.BaseColor;
  
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.PageSize;
@@ -18,29 +19,50 @@ import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import static ictproject.JDBCConnection.conn;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javaapplication1.Preeti;
 import javaapplication1.file;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 /**
  *
  * @author Sandeep
  */
 public class ReportGenerator {
+    File file = new File("C:/ICTProject");
+	
     String encoding = "Identity-H";
 //    Font fontNormal = FontFactory.getFont(("C:/Users/Sandeep/Downloads/arialuni.ttf"), encoding,BaseFont.EMBEDDED, 16, Font.NORMAL);
    // Font fontNormal = FontFactory.getFont(("C:/Users/Sandeep/Downloads/mangal.ttf"), encoding,BaseFont.EMBEDDED, 16, Font.NORMAL);
-    Font fontNormal = FontFactory.getFont(("C:/Users/Sandeep/Downloads/Preeti_0.ttf"), encoding,BaseFont.EMBEDDED, 16, Font.NORMAL);
-            
+    File f=new File("Preeti_0.ttf");
+//    String path="C:/Users/Sandeep/Documents/NetBeansProjects/ICTProject/src/ictproject/Preeti_0.ttf";
+    String path=f.getAbsolutePath();
+    Font fontNormal = FontFactory.getFont(path.trim(), encoding,BaseFont.EMBEDDED, 16, Font.NORMAL);
+        
     public void writer(String selected){
+        
+        if (!file.exists()) {
+		if (file.mkdir()) {
+			System.out.println("Directory is created!");
+		} else {
+			System.out.println("Failed to create directory!");
+		}
+	}
+        
+        
        Document document=new Document(PageSize.A4); 
          try{
-         com.itextpdf.text.pdf.PdfWriter.getInstance(document,new FileOutputStream("E:/hello.pdf")); 
+         String path="C:/ICTProject"+selected+".pdf";
+         com.itextpdf.text.pdf.PdfWriter.getInstance(document,new FileOutputStream(path)); 
          document.open(); 
-         
+         Paragraph para=getParagraph(selected,"gulmi");
+         document.add(para);
+         document.add( Chunk.NEWLINE );
+         document.add( Chunk.NEWLINE );
          document.add(getParagraph(selected,"janajatiAnusar"));
          document.add(janajatiAnusar(selected));
  
@@ -71,6 +93,9 @@ public class ReportGenerator {
          document.close();
          }catch(Exception e){
              System.out.println("error"+e.getMessage());
+             ErrorPopup errorPopup=new ErrorPopup(e.getMessage());
+             errorPopup.setVisible(true);
+             errorPopup.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
          } 
     }
     
@@ -100,7 +125,7 @@ public class ReportGenerator {
           table.addCell(rs.getString("wardNo"));
           table.addCell(rs.getString("paniKoSrotCount"));
           table.addCell(rs.getString("pokharicount"));
-          table.addCell(rs.getString("Remarks"));
+          table.addCell(getNepaliPhrase(converter(rs.getString("remarks"))));
  
       }
       table.addCell(getNepaliPhrase("hDdf"));
@@ -125,7 +150,7 @@ public class ReportGenerator {
             table.addCell(getNepaliPhrase("aif{-@)^(÷&)_"));//"बर्ष""));//२०६९/७०)");
             table.addCell(getNepaliPhrase("aif{-@)&)÷&!_"));
             table.addCell(getNepaliPhrase("aif{-@)&)÷&!_"));
-            table.addCell(getNepaliPhrase("aif{-@)&)÷&!_"));
+            table.addCell(getNepaliPhrase("s}lkmot"));
             table.setHeaderRows(1);
             table.getDefaultCell().setBackgroundColor(null);
 
@@ -138,11 +163,11 @@ public class ReportGenerator {
       //STEP 5: Extract data from result set
       while(rs.next()){
           table.addCell(rs.getString("SNo"));
-          table.addCell(new Phrase(new Chunk(rs.getString("diseaseName"),fontNormal)));
+          table.addCell(getNepaliPhrase(converter(rs.getString("diseaseName"))));
           table.addCell(rs.getString("year6970"));
           table.addCell(rs.getString("year7071"));
           table.addCell(rs.getString("year7172"));
-          table.addCell(new Phrase(new Chunk(rs.getString("remarks"),fontNormal)));
+          table.addCell(getNepaliPhrase(converter(rs.getString("remarks"))));
  
       }
 
@@ -177,11 +202,10 @@ public class ReportGenerator {
           table.addCell(rs.getString("khanePani"));
           table.addCell(rs.getString("sarSafai"));
           table.addCell(rs.getString("total"));
-          table.addCell(getNepaliPhrase(rs.getString("remarks")));
+          table.addCell(getNepaliPhrase(converter(rs.getString("remarks"))));
  
       }
       table.addCell(getNepaliPhrase("hDdf"));//jamma
-                System.out.println("khanepani"+getSum(name, "khanePani", tableName));
       table.addCell(String.valueOf(getSum(name, "khanePani", tableName)));
       table.addCell(String.valueOf(getSum(name, "sarSafai", tableName)));
       table.addCell(String.valueOf(getSum(name, "total", tableName)));
@@ -212,7 +236,7 @@ public class ReportGenerator {
         cell = new PdfPCell(getNepaliPhrase("s}lkmot"));//कैिफयत"));
         cell.setRowspan(2);
         table.addCell(cell);
-        table.addCell(getNepaliPhrase("s}lkmot"));//दिलत"));
+        table.addCell(getNepaliPhrase("blnt"));//दिलत"));
         table.addCell(getNepaliPhrase("cflbjf;L÷hghftL"));//आिदवासी/जनजाती"));
         table.addCell(getNepaliPhrase("d'lZnd"));//muslim
         table.addCell(getNepaliPhrase("cGo"));//अन्य"));
@@ -232,7 +256,7 @@ public class ReportGenerator {
             table.addCell(rs.getString("muslim"));
             table.addCell(rs.getString("anya"));
             table.addCell(rs.getString("jamma"));
-            table.addCell(new Phrase(new Chunk(rs.getString("remarks"),fontNormal)));
+            table.addCell(getNepaliPhrase(converter(rs.getString("remarks"))));
  
       }
 
@@ -305,14 +329,14 @@ public class ReportGenerator {
             table.addCell(rs.getString("temporaryToilet"));
             table.addCell(rs.getString("permanentToilet"));
             table.addCell(rs.getString("noToilet"));
-            table.addCell(rs.getString("bhakonaBhako"));
-            table.addCell(rs.getString("bhakonaDate"));
+            table.addCell(getNepaliPhrase(converter(rs.getString("bhakonaBhako"))));
+            table.addCell(getNepaliPhrase(converter(rs.getString("bhakonaDate"))));
             table.addCell(rs.getString("urineSeperation"));
             table.addCell(rs.getString("urineManure"));
             table.addCell(rs.getString("bioGasUse"));
             table.addCell(rs.getString("noSmokeGas"));
             table.addCell(rs.getString("noSmokeWard"));
-            table.addCell(new Phrase(new Chunk(rs.getString("remarks"),fontNormal)));
+            table.addCell(getNepaliPhrase(converter(rs.getString("remarks"))));
  
       }
 
@@ -331,8 +355,9 @@ public class ReportGenerator {
             table.addCell(String.valueOf(getSum(name,"urineSeperation","sauchalaykoawasta")));
             table.addCell(String.valueOf(getSum(name,"urineManure","sauchalaykoawasta")));
             table.addCell(String.valueOf(getSum(name,"bioGasUse","sauchalaykoawasta")));
-            table.addCell("");
-            table.addCell("");
+            table.addCell(String.valueOf(getSum(name,"noSmokeGas","sauchalaykoawasta")));
+            table.addCell(String.valueOf(getSum(name,"noSmokeWard","sauchalaykoawasta")));
+            
             table.addCell("");
         
        return table;
@@ -383,6 +408,16 @@ public class ReportGenerator {
                 Paragraph para1=new Paragraph("$= zf}rfnosf] cj:yf M",fontNormal);//४. शौचालयको अवस्था ",fontNormal);
                 paragraph.add(para1);
                 break;
+            }
+            case "gulmi":{
+                Paragraph para=new Paragraph();
+                Paragraph para1=new Paragraph("lhNnf ljsf; ;ldltsf] sfof{no",fontNormal);
+                para1.setIndentationLeft(150);
+                Paragraph para3=new Paragraph("u'NdL",fontNormal);
+                para3.setIndentationLeft(170);
+                para.add(para1);
+                para.add(para3);
+                return para;
             }
             
         }
@@ -435,6 +470,9 @@ public class ReportGenerator {
     }
     
     private String converter(String unicodeString){
+        if(unicodeString.equals("")){
+            return "";
+        }
         file.temp=new StringBuffer(unicodeString);
         return new Preeti().converter();
     }

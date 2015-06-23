@@ -54,24 +54,31 @@ public class JanajatiAnusarKoGharDuri extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Mangal", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "1", null, null, null, null},
-                {"2", "2", null, null, null, null},
-                {"3", "3", null, null, null, null},
-                {"4", "4", null, null, null, null},
-                {"5", "5", null, null, null, null},
-                {"6", "6", null, null, null, null},
-                {"7", "7", null, null, null, null},
-                {"8", "8", null, null, null, null},
-                {"9", "9", null, null, null, null}
+                {"1", "1", null, null, null, null, null},
+                {"2", "2", null, null, null, null, null},
+                {"3", "3", null, null, null, null, null},
+                {"4", "4", null, null, null, null, null},
+                {"5", "5", null, null, null, null, null},
+                {"6", "6", null, null, null, null, null},
+                {"7", "7", null, null, null, null, null},
+                {"8", "8", null, null, null, null, null},
+                {"9", "9", null, null, null, null, null}
             },
             new String [] {
-                "सि.नं.", "वडा नं.", "दलित", "आदिवासी/जनजाती", "मुश्लिम", "अन्य"
+                "सि.नं.", "वडा नं.", "दलित", "आदिवासी/जनजाती", "मुश्लिम", "अन्य", "कैफियत"
             }
-        ));
-        jTable1.setColumnSelectionAllowed(false);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Long.class, java.lang.Long.class, java.lang.Long.class, java.lang.Long.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jTable1.setEnabled(true);
         jTable1.setRowHeight(15);
         jScrollPane1.setViewportView(jTable1);
