@@ -111,7 +111,7 @@
                 <Column editable="true" title="&lt;html&gt;&#x92a;&#x93f;&#x938;&#x93e;&#x935; &#x92e;&#x932; &#x92a;&#x94d;&#x930;&#x92f;&#x94b;&#x917; &lt;br&gt;&#x917;&#x930;&#x94d;&#x928;&#x947; &#x918;&#x930;&#x927;&#x941;&#x930;&#x940;  &#x938;&#x902;&#x916;&#x94d;&#x92f;&#x93e;" type="java.lang.Long"/>
                 <Column editable="true" title="&lt;html&gt;&#x92c;&#x93e;&#x92f;&#x94b; &#x917;&#x94d;&#x92f;&#x93e;&#x938; &#x91a;&#x930;&#x94d;&#x92a;&#x940; &lt;br&gt;&#x92a;&#x94d;&#x930;&#x92f;&#x94b;&#x917; &#x917;&#x930;&#x94d;&#x928;&#x947; &#x918;&#x930;&#x927;&#x941;&#x930;&#x940; " type="java.lang.Long"/>
                 <Column editable="true" title="&lt;html&gt;&#x927;&#x941;&#x901;&#x935;&#x93e;&#x930;&#x939;&#x93f;&#x924; &#x91a;&#x941;&#x932;&#x94d;&#x939;&#x94b;&lt;br&gt; &#x92d;&#x90f;&#x915;&#x94b; &#x918;&#x930; &#x938;&#x902;&#x916;&#x94d;&#x92f;&#x93e;" type="java.lang.Long"/>
-                <Column editable="true" title="&lt;html&gt;&#x927;&#x941;&#x901;&#x935;&#x93e;&#x930;&#x939;&#x93f;&#x924; &#x935;&#x921;&#x93e; &lt;br&gt;&#x918;&#x94b;&#x937;&#x923;  &#x92d;&#x90f;&#x915;&#x94b;/&#x928;&#x92d;&#x90f;&#x915;&#x94b;" type="java.lang.Long"/>
+                <Column editable="true" title="&lt;html&gt;&#x927;&#x941;&#x901;&#x935;&#x93e;&#x930;&#x939;&#x93f;&#x924; &#x935;&#x921;&#x93e; &lt;br&gt;&#x918;&#x94b;&#x937;&#x923;  &#x92d;&#x90f;&#x915;&#x94b;/&#x928;&#x92d;&#x90f;&#x915;&#x94b;" type="java.lang.Object"/>
                 <Column editable="true" title="&#x915;&#x948;&#x92b;&#x93f;&#x92f;&#x924;" type="java.lang.Object"/>
               </Table>
             </Property>

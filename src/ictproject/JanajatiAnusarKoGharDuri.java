@@ -48,6 +48,7 @@ public class JanajatiAnusarKoGharDuri extends javax.swing.JFrame {
             }
         });
 
+        ghabisaKoNaam.setFont(new java.awt.Font("Preeti", 0, 14)); // NOI18N
         ghabisaKoNaam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ghabisaKoNaamActionPerformed(evt);

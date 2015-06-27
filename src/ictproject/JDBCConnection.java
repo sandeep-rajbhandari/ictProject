@@ -9,7 +9,14 @@ package ictproject;
  *
  * @author Sandeep
  */
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
 import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
+import javaapplication1.Preeti;
+import javaapplication1.file;
 import javax.swing.table.TableModel;
 
 public  class JDBCConnection {
@@ -72,5 +79,94 @@ public  class JDBCConnection {
       se.printStackTrace();
         }
     }
+      
+      public static PdfPCell getSum(String name,String field,String tableName){
+      try{
+           Statement stmt = conn.createStatement();
+      String sql;
+      sql = "SELECT sum("+field+") from  "+tableName+" where name='"+name+"'";
+      ResultSet rs = stmt.executeQuery(sql);
+
+      //STEP 5: Extract data from result set
+      if(rs.next()){
+          if(rs.getString(1)!=null)
+            return numberConverterToUnicode(rs.getString(1));
+      }
+
+        }  
+        catch(SQLException se){
+      //Handle errors for JDBC
+      se.printStackTrace();
+        }  
+       return numberConverterToUnicode("0"); 
+    }
+    
+    public static Chunk getDistinctResult(String name,String field,String tableName){
+      try{
+           Statement stmt = conn.createStatement();
+      String sql;
+      sql = "SELECT distinct("+field+") from  "+tableName+" where name='"+name+"'";
+      ResultSet rs = stmt.executeQuery(sql);
+
+      //STEP 5: Extract data from result set
+      if(rs.next()){
+          if(rs.getString(1)!=null)
+            return numberConverterToUnicodeInChunk(rs.getString(1));
+      }
+
+        }  
+        catch(SQLException se){
+      //Handle errors for JDBC
+      se.printStackTrace();
+        }  
+       return numberConverterToUnicodeInChunk("0"); 
+    }
+    
+    
+    public static String converter(String unicodeString){
+        if(unicodeString.equals("")){
+            return "";
+        }
+        file.temp=new StringBuffer(unicodeString);
+        return new Preeti().converter();
+    }
+    public static PdfPCell numberConverterToUnicode(String actualData){
+   
+   Map<String,String> mapper=new HashMap<String, String>();
+   mapper.put("1","!");
+   mapper.put("2","@");
+   mapper.put("3","#");
+   mapper.put("4","$");
+   mapper.put("5","%");
+   mapper.put("6","^");
+   mapper.put("7","&");
+   mapper.put("8","*");
+   mapper.put("9","(");
+   mapper.put("0",")");
+   for(String key:mapper.keySet()){
+       actualData=actualData.replace(key, mapper.get(key));
+   }
+    return new ReportGenerator().getNepaliPhrase(actualData);
+    }
+    
+    public static Chunk numberConverterToUnicodeInChunk(String actualData){
+   
+   Map<String,String> mapper=new HashMap<String, String>();
+   mapper.put("1","!");
+   mapper.put("2","@");
+   mapper.put("3","#");
+   mapper.put("4","$");
+   mapper.put("5","%");
+   mapper.put("6","^");
+   mapper.put("7","&");
+   mapper.put("8","*");
+   mapper.put("9","(");
+   mapper.put("0",")");
+   for(String key:mapper.keySet()){
+       actualData=actualData.replace(key, mapper.get(key));
+   }
+    return new ReportGenerator().getNepaliPhraseInChunk(actualData);
+    }
+
 
 }

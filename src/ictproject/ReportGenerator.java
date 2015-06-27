@@ -6,10 +6,8 @@
 package ictproject;
 
 import com.itextpdf.text.BaseColor;
- 
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
-import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.PageSize;
@@ -19,13 +17,17 @@ import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import static ictproject.JDBCConnection.conn;
+import static ictproject.JDBCConnection.converter;
+import static ictproject.JDBCConnection.getDistinctResult;
+import static ictproject.JDBCConnection.getSum;
+import static ictproject.JDBCConnection.numberConverterToUnicode;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javaapplication1.Preeti;
-import javaapplication1.file;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
 /**
@@ -33,30 +35,29 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
  * @author Sandeep
  */
 public class ReportGenerator {
-    File file = new File("C:/ICTProject");
+    File folderForPDF = new File("C:/ICTProject");
 	
     String encoding = "Identity-H";
 //    Font fontNormal = FontFactory.getFont(("C:/Users/Sandeep/Downloads/arialuni.ttf"), encoding,BaseFont.EMBEDDED, 16, Font.NORMAL);
    // Font fontNormal = FontFactory.getFont(("C:/Users/Sandeep/Downloads/mangal.ttf"), encoding,BaseFont.EMBEDDED, 16, Font.NORMAL);
-    File f=new File("Preeti_0.ttf");
-//    String path="C:/Users/Sandeep/Documents/NetBeansProjects/ICTProject/src/ictproject/Preeti_0.ttf";
-    String path=f.getAbsolutePath();
-    Font fontNormal = FontFactory.getFont(path.trim(), encoding,BaseFont.EMBEDDED, 16, Font.NORMAL);
+//    File f=new File("Preeti_0.ttf");
+    String fontPath="C:/Windows/Fonts/Preeti_0.ttf";
+    Path path=Paths.get(fontPath);
+    Font fontNormal = FontFactory.getFont(fontPath, encoding,BaseFont.EMBEDDED, 16, Font.NORMAL);
         
     public void writer(String selected){
-        
-        if (!file.exists()) {
-		if (file.mkdir()) {
-			System.out.println("Directory is created!");
-		} else {
-			System.out.println("Failed to create directory!");
-		}
-	}
+//        if (!folderForPDF.exists()) {
+//		if (folderForPDF.mkdir()) {
+//			System.out.println("Directory is created!");
+//		} else {
+//			System.out.println("Failed to create directory!");
+//		}
+//	}
         
         
        Document document=new Document(PageSize.A4); 
          try{
-         String path="C:/ICTProject"+selected+".pdf";
+         String path="E:/"+selected+".pdf";
          com.itextpdf.text.pdf.PdfWriter.getInstance(document,new FileOutputStream(path)); 
          document.open(); 
          Paragraph para=getParagraph(selected,"gulmi");
@@ -92,6 +93,7 @@ public class ReportGenerator {
                   
          document.close();
          }catch(Exception e){
+             e.printStackTrace();
              System.out.println("error"+e.getMessage());
              ErrorPopup errorPopup=new ErrorPopup(e.getMessage());
              errorPopup.setVisible(true);
@@ -121,17 +123,17 @@ public class ReportGenerator {
 
       //STEP 5: Extract data from result set
       while(rs.next()){
-          table.addCell(rs.getString("serialNo"));
-          table.addCell(rs.getString("wardNo"));
-          table.addCell(rs.getString("paniKoSrotCount"));
-          table.addCell(rs.getString("pokharicount"));
+          table.addCell(numberConverterToUnicode(rs.getString("serialNo")));
+          table.addCell(numberConverterToUnicode(rs.getString("wardNo")));
+          table.addCell(numberConverterToUnicode(rs.getString("paniKoSrotCount")));
+          table.addCell(numberConverterToUnicode(rs.getString("pokharicount")));
           table.addCell(getNepaliPhrase(converter(rs.getString("remarks"))));
  
       }
       table.addCell(getNepaliPhrase("hDdf"));
       table.addCell("");
       table.addCell("");
-      table.addCell((String.valueOf(getSum(name, "pokharicount","bidamanpanikosrot"))));
+      table.addCell(getSum(name, "pokharicount","bidamanpanikosrot"));
       table.addCell("");
 
         }  
@@ -162,11 +164,11 @@ public class ReportGenerator {
 
       //STEP 5: Extract data from result set
       while(rs.next()){
-          table.addCell(rs.getString("SNo"));
+          table.addCell(numberConverterToUnicode(rs.getString("SNo")));
           table.addCell(getNepaliPhrase(converter(rs.getString("diseaseName"))));
-          table.addCell(rs.getString("year6970"));
-          table.addCell(rs.getString("year7071"));
-          table.addCell(rs.getString("year7172"));
+          table.addCell(numberConverterToUnicode(rs.getString("year6970")));
+          table.addCell(numberConverterToUnicode(rs.getString("year7071")));
+          table.addCell(numberConverterToUnicode(rs.getString("year7172")));
           table.addCell(getNepaliPhrase(converter(rs.getString("remarks"))));
  
       }
@@ -199,16 +201,16 @@ public class ReportGenerator {
       //STEP 5: Extract data from result set
       while(rs.next()){
           table.addCell(getNepaliPhrase(rs.getString("arthikBarsa")));
-          table.addCell(rs.getString("khanePani"));
-          table.addCell(rs.getString("sarSafai"));
-          table.addCell(rs.getString("total"));
+          table.addCell(numberConverterToUnicode(rs.getString("khanePani")));
+          table.addCell(numberConverterToUnicode(rs.getString("sarSafai")));
+          table.addCell(numberConverterToUnicode(rs.getString("total")));
           table.addCell(getNepaliPhrase(converter(rs.getString("remarks"))));
  
       }
       table.addCell(getNepaliPhrase("hDdf"));//jamma
-      table.addCell(String.valueOf(getSum(name, "khanePani", tableName)));
-      table.addCell(String.valueOf(getSum(name, "sarSafai", tableName)));
-      table.addCell(String.valueOf(getSum(name, "total", tableName)));
+      table.addCell(getSum(name, "khanePani", tableName));
+      table.addCell(getSum(name, "sarSafai", tableName));
+      table.addCell(getSum(name, "total", tableName));
       
       table.addCell("");
 
@@ -249,13 +251,13 @@ public class ReportGenerator {
 
       //STEP 5: Extract data from result set
       while(rs.next()){
-            table.addCell(rs.getString("sno"));
-            table.addCell(rs.getString("wardNo"));
-            table.addCell(rs.getString("dalit"));
-            table.addCell(rs.getString("adiwsi"));
-            table.addCell(rs.getString("muslim"));
-            table.addCell(rs.getString("anya"));
-            table.addCell(rs.getString("jamma"));
+            table.addCell(numberConverterToUnicode(rs.getString("sno")));
+            table.addCell(numberConverterToUnicode(rs.getString("wardNo")));
+            table.addCell(numberConverterToUnicode(rs.getString("dalit")));
+            table.addCell(numberConverterToUnicode(rs.getString("adiwsi")));
+            table.addCell(numberConverterToUnicode(rs.getString("muslim")));
+            table.addCell(numberConverterToUnicode(rs.getString("anya")));
+            table.addCell(numberConverterToUnicode(rs.getString("jamma")));
             table.addCell(getNepaliPhrase(converter(rs.getString("remarks"))));
  
       }
@@ -267,11 +269,11 @@ public class ReportGenerator {
         }
             table.addCell(getNepaliPhrase("hDdf"));//jamma
             table.addCell("");
-            table.addCell(String.valueOf(getSum(name,"dalit","janajatianusarkogharduri")));
-            table.addCell(String.valueOf(getSum(name,"adiwsi","janajatianusarkogharduri")));
-            table.addCell(String.valueOf(getSum(name,"muslim","janajatianusarkogharduri")));
-            table.addCell(String.valueOf(getSum(name,"anya","janajatianusarkogharduri")));
-            table.addCell(String.valueOf(getSum(name,"jamma","janajatianusarkogharduri")));
+            table.addCell(getSum(name,"dalit","janajatianusarkogharduri"));
+            table.addCell(getSum(name,"adiwsi","janajatianusarkogharduri"));
+            table.addCell(getSum(name,"muslim","janajatianusarkogharduri"));
+            table.addCell(getSum(name,"anya","janajatianusarkogharduri"));
+            table.addCell(getSum(name,"jamma","janajatianusarkogharduri"));
             table.addCell("");
         
        return table;
@@ -324,20 +326,20 @@ public class ReportGenerator {
 
       //STEP 5: Extract data from result set
       while(rs.next()){
-            table.addCell(rs.getString("sno"));
-            table.addCell(rs.getString("wardNo"));
-            table.addCell(rs.getString("temporaryToilet"));
-            table.addCell(rs.getString("permanentToilet"));
-            table.addCell(rs.getString("noToilet"));
+            table.addCell(numberConverterToUnicode(rs.getString("sno")));
+            table.addCell(numberConverterToUnicode(rs.getString("wardNo")));
+            table.addCell(numberConverterToUnicode(rs.getString("temporaryToilet")));
+            table.addCell(numberConverterToUnicode(rs.getString("permanentToilet")));
+            table.addCell(numberConverterToUnicode(rs.getString("noToilet")));
             table.addCell(getNepaliPhrase(converter(rs.getString("bhakonaBhako"))));
-            table.addCell(getNepaliPhrase(converter(rs.getString("bhakonaDate"))));
-            table.addCell(rs.getString("urineSeperation"));
-            table.addCell(rs.getString("urineManure"));
-            table.addCell(rs.getString("bioGasUse"));
-            table.addCell(rs.getString("noSmokeGas"));
-            table.addCell(rs.getString("noSmokeWard"));
+            table.addCell(getNepaliPhrase(converter(rs.getString("bhakonaDate").replace("-", "÷")).replace("247", "÷")));
+            table.addCell(numberConverterToUnicode(rs.getString("urineSeperation")));
+            table.addCell(numberConverterToUnicode(rs.getString("urineManure")));
+            table.addCell(numberConverterToUnicode(rs.getString("bioGasUse")));
+            table.addCell(numberConverterToUnicode(rs.getString("noSmokeGas")));
+            table.addCell(numberConverterToUnicode(rs.getString("noSmokeWard")));
             table.addCell(getNepaliPhrase(converter(rs.getString("remarks"))));
- 
+          System.out.println("date"+converter(rs.getString("bhakonaDate").replace("-", "÷")).replace("247", "÷"));
       }
 
         }  
@@ -347,16 +349,16 @@ public class ReportGenerator {
         }
             table.addCell(getNepaliPhrase("hDdf"));
             table.addCell("");
-            table.addCell(String.valueOf(getSum(name,"temporaryToilet","sauchalaykoawasta")));
-            table.addCell(String.valueOf(getSum(name,"permanentToilet","sauchalaykoawasta")));
-            table.addCell(String.valueOf(getSum(name,"noToilet","sauchalaykoawasta")));
+            table.addCell(getSum(name,"temporaryToilet","sauchalaykoawasta"));
+            table.addCell(getSum(name,"permanentToilet","sauchalaykoawasta"));
+            table.addCell(getSum(name,"noToilet","sauchalaykoawasta"));
             table.addCell("");
             table.addCell("");
-            table.addCell(String.valueOf(getSum(name,"urineSeperation","sauchalaykoawasta")));
-            table.addCell(String.valueOf(getSum(name,"urineManure","sauchalaykoawasta")));
-            table.addCell(String.valueOf(getSum(name,"bioGasUse","sauchalaykoawasta")));
-            table.addCell(String.valueOf(getSum(name,"noSmokeGas","sauchalaykoawasta")));
-            table.addCell(String.valueOf(getSum(name,"noSmokeWard","sauchalaykoawasta")));
+            table.addCell(getSum(name,"urineSeperation","sauchalaykoawasta"));
+            table.addCell(getSum(name,"urineManure","sauchalaykoawasta"));
+            table.addCell(getSum(name,"bioGasUse","sauchalaykoawasta"));
+            table.addCell(getSum(name,"noSmokeGas","sauchalaykoawasta"));
+            table.addCell(getSum(name,"noSmokeWard","sauchalaykoawasta"));
             
             table.addCell("");
         
@@ -384,16 +386,18 @@ public class ReportGenerator {
 //              Paragraph para4=new Paragraph(getDistinctResult(name, "gabisaKoLagani", "actualBudget"));
               Paragraph para5=new Paragraph();
              para5.add(new Chunk("uflj;sf] hDdf ;Defljt nufgL ? ",fontNormal));
-             para5.add(new Chunk(String.valueOf(getDistinctResult(name, "gabisaKoLagani", "actualBudget"))));
+             para5.add(getDistinctResult(name, "gabisaKoLagani", "actualBudget"));
                 paragraph.add(para1);
                 paragraph.add(para5);
                 break;  
             }
             case "expected budget":{
                 Paragraph para1=new Paragraph("# -v_ cfufdL # jif{sf nflu uflj;sf] vfg]kfgL tyf ;/;kmfO If]qdf x'g ;Sg] ;Defljt ah]6M",fontNormal);
-                Paragraph para3=new Paragraph("uflj;sf] hDdf ;Defljt nufgL ? ",fontNormal);
+                Paragraph para5=new Paragraph();
+                para5.add(new Chunk("uflj;sf] hDdf ;Defljt nufgL ? ",fontNormal));
+                para5.add(getDistinctResult(name, "gabisaKoLagani", "expectedBudget"));
                 paragraph.add(para1);
-                paragraph.add(para3);
+                paragraph.add(para5);
                 break;
             }
             case "janajatiAnusar":{
@@ -414,66 +418,23 @@ public class ReportGenerator {
                 Paragraph para1=new Paragraph("lhNnf ljsf; ;ldltsf] sfof{no",fontNormal);
                 para1.setIndentationLeft(150);
                 Paragraph para3=new Paragraph("u'NdL",fontNormal);
-                para3.setIndentationLeft(170);
+                para3.setIndentationLeft(210);
+                Paragraph para4=new Paragraph(";/;kmfO{ tyf vfg]kfgL PsfO{",fontNormal);
+                para4.setIndentationLeft(150);
                 para.add(para1);
                 para.add(para3);
+                para.add(para4);
                 return para;
             }
             
         }
         return paragraph ;
     }
-    private int getSum(String name,String field,String tableName){
-      try{
-           Statement stmt = conn.createStatement();
-      String sql;
-      sql = "SELECT sum("+field+") from  "+tableName+" where name='"+name+"'";
-      ResultSet rs = stmt.executeQuery(sql);
-
-      //STEP 5: Extract data from result set
-      if(rs.next()){
-          if(rs.getString(1)!=null)
-            return Integer.parseInt(rs.getString(1));
-      }
-
-        }  
-        catch(SQLException se){
-      //Handle errors for JDBC
-      se.printStackTrace();
-        }  
-       return 0; 
+    public PdfPCell getNepaliPhrase(String word){
+      return new PdfPCell(new Phrase(new Chunk(word,fontNormal)));
     }
     
-    private int getDistinctResult(String name,String field,String tableName){
-      try{
-           Statement stmt = conn.createStatement();
-      String sql;
-      sql = "SELECT distinct("+field+") from  "+tableName+" where name='"+name+"'";
-      ResultSet rs = stmt.executeQuery(sql);
-
-      //STEP 5: Extract data from result set
-      if(rs.next()){
-          if(rs.getString(1)!=null)
-            return Integer.parseInt(rs.getString(1));
-      }
-
-        }  
-        catch(SQLException se){
-      //Handle errors for JDBC
-      se.printStackTrace();
-        }  
-       return 0; 
-    }
-    private PdfPCell getNepaliPhrase(String word){
-        
-        return new PdfPCell(new Phrase(new Chunk(word,fontNormal)));
-    }
-    
-    private String converter(String unicodeString){
-        if(unicodeString.equals("")){
-            return "";
-        }
-        file.temp=new StringBuffer(unicodeString);
-        return new Preeti().converter();
+    public Chunk getNepaliPhraseInChunk(String word){
+      return new Chunk(word,fontNormal);
     }
 }
