@@ -374,11 +374,14 @@ public class ReportGenerator {
         switch(type){
             case "pani ko sroth":{
                 Paragraph para1=new Paragraph("@= ljBfdfg kfgLsf >f]tx?sf] cj:yfM",fontNormal);
+                para1.setAlignment(Element.ALIGN_CENTER);
+
                 paragraph.add(para1);
                 break;
             }
             case "pani janya rog ko bibaran":{
                 Paragraph para1=new Paragraph("%= kfgLhGo /f]ux?sf] ljj/0f M",fontNormal);
+                para1.setAlignment(Element.ALIGN_CENTER);
                 Paragraph para3=new Paragraph("uflj;:t/Lo kfgLhGo /f]ux?sf] ljj/0f :jf:Yo rf}sLaf6 jf dlxnf ;jo+;]ljsf af6 lng]",fontNormal);
                 paragraph.add(para1);
                 break;
@@ -387,6 +390,7 @@ public class ReportGenerator {
               Paragraph para1=new Paragraph("# -s_ ut tLg jif{sf nflu uflj;n] vfg]kfgL tyf ;/;kmfO If]qdf 5'6fPsf] jh]6 ljj/0fM",fontNormal);
 //              Paragraph para3=new Paragraph("uflj;sf] hDdf ;Defljt nufgL ? ",fontNormal);
 //              Paragraph para4=new Paragraph(getDistinctResult(name, "gabisaKoLagani", "actualBudget"));
+              para1.setAlignment(Element.ALIGN_CENTER);
               Paragraph para5=new Paragraph();
              para5.add(new Chunk("uflj;sf] hDdf ;Defljt nufgL ? ",fontNormal));
              para5.add(getDistinctResult(name, "gabisaKoLagani", "actualBudget"));
@@ -396,6 +400,7 @@ public class ReportGenerator {
             }
             case "expected budget":{
                 Paragraph para1=new Paragraph("# -v_ cfufdL # jif{sf nflu uflj;sf] vfg]kfgL tyf ;/;kmfO If]qdf x'g ;Sg] ;Defljt ah]6M",fontNormal);
+                para1.setAlignment(Element.ALIGN_CENTER);
                 Paragraph para5=new Paragraph();
                 para5.add(new Chunk("uflj;sf] hDdf ;Defljt nufgL ? ",fontNormal));
                 para5.add(getDistinctResult(name, "gabisaKoLagani", "expectedBudget"));
@@ -404,26 +409,31 @@ public class ReportGenerator {
                 break;
             }
             case "janajatiAnusar":{
-                Paragraph para2=new Paragraph("uflj;sf] gfd MM"+converter(name),fontNormal);
+                Paragraph para2=new Paragraph("uflj;sf] gfdMM"+converter(name),fontNormal);
+                para2.setIndentationLeft(50);
                 Paragraph para1=new Paragraph("!= hfthftL cg';f/sf] 3/w'/L ljj/0fM",fontNormal);
-                
+                para1.setAlignment(Element.ALIGN_CENTER);
                 paragraph.add(para2);
+                paragraph.add(Chunk.NEWLINE);
+                paragraph.add(Chunk.NEWLINE);
                 paragraph.add(para1);
                 break;
             }
             case "sauchalayKoAwasta":{
                 Paragraph para1=new Paragraph("$= zf}rfnosf] cj:yf M",fontNormal);//४. शौचालयको अवस्था ",fontNormal);
+                para1.setAlignment(Element.ALIGN_CENTER);
                 paragraph.add(para1);
                 break;
             }
             case "gulmi":{
                 Paragraph para=new Paragraph();
                 Paragraph para1=new Paragraph("lhNnf ljsf; ;ldltsf] sfof{no",fontNormal);
-                para1.setIndentationLeft(150);
+                para1.setAlignment(Element.ALIGN_CENTER);
+                
                 Paragraph para3=new Paragraph("u'NdL",fontNormal);
-                para3.setIndentationLeft(210);
+                para3.setAlignment(Element.ALIGN_CENTER);
                 Paragraph para4=new Paragraph(";/;kmfO{ tyf vfg]kfgL PsfO{",fontNormal);
-                para4.setIndentationLeft(150);
+                para4.setAlignment(Element.ALIGN_CENTER);
                 para.add(para1);
                 para.add(para3);
                 para.add(para4);
