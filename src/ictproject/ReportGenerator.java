@@ -8,14 +8,17 @@ package ictproject;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
+import com.lowagie.text.pdf.PdfCell;
 import static ictproject.JDBCConnection.conn;
 import static ictproject.JDBCConnection.converter;
 import static ictproject.JDBCConnection.getDistinctResult;
@@ -431,7 +434,9 @@ public class ReportGenerator {
         return paragraph ;
     }
     public PdfPCell getNepaliPhrase(String word){
-      return new PdfPCell(new Phrase(new Chunk(word,fontNormal)));
+      PdfPCell cell=new PdfPCell(new Phrase(new Chunk(word,fontNormal)));
+      cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+      return cell;
     }
     
     public Chunk getNepaliPhraseInChunk(String word){

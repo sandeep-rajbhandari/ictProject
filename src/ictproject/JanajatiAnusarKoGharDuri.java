@@ -48,14 +48,12 @@ public class JanajatiAnusarKoGharDuri extends javax.swing.JFrame {
             }
         });
 
-        ghabisaKoNaam.setFont(new java.awt.Font("Preeti", 0, 14)); // NOI18N
         ghabisaKoNaam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ghabisaKoNaamActionPerformed(evt);
             }
         });
 
-        jTable1.setFont(new java.awt.Font("Mangal", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"1", "1", null, null, null, null, null},
