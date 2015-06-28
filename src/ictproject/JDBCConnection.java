@@ -9,15 +9,17 @@ package ictproject;
  *
  * @author Sandeep
  */
+import UncodeToPreetiConverter.Preeti;
+import UncodeToPreetiConverter.file;
 import com.itextpdf.text.Chunk;
-import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
-import javaapplication1.Preeti;
-import javaapplication1.file;
-import javax.swing.table.TableModel;
 
 public  class JDBCConnection {
    // JDBC driver name and database URL
