@@ -170,5 +170,23 @@ public  class JDBCConnection {
     return new ReportGenerator().getNepaliPhraseInChunk(actualData);
     }
 
+    public static void getDisticts(javax.swing.JComboBox jComboBox1){
+        try{
+            String sql="select name from actualbudget union distinct" +
+" select name from bidamanpanikosrot union distinct" +
+" select name from expectedbudget union distinct" +
+" select name from janajatianusarkogharduri union distinct" +
+" select name from panijanyarogkabibaran union distinct" +
+" select name from sauchalaykoawasta";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                jComboBox1.addItem(rs.getString("name"));
+            }
+
+        }catch(Exception e){
+            System.out.println("exception"+e);  
+        }
+    }
 
 }
