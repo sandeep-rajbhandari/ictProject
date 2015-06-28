@@ -56,7 +56,6 @@ public class PaniKosrothDataEnter extends javax.swing.JFrame {
 
         Name.setText("गाविसको नाम ");
 
-        jTable2.setFont(new java.awt.Font("Mangal", 0, 11)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"1",  new Long(1), null, null, null},
