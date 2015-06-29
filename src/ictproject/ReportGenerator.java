@@ -432,7 +432,7 @@ public class ReportGenerator {
                 
                 Paragraph para3=new Paragraph("u'NdL",fontNormal);
                 para3.setAlignment(Element.ALIGN_CENTER);
-                Paragraph para4=new Paragraph(";/;kmfO{ tyf vfg]kfgL PsfO{",fontNormal);
+                Paragraph para4=new Paragraph("vfg]kfgL tyf ;/;kmfO OsfO{",fontNormal);
                 para4.setAlignment(Element.ALIGN_CENTER);
                 para.add(para1);
                 para.add(para3);
