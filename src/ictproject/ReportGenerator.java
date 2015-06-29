@@ -16,9 +16,11 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.ColumnText;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import com.lowagie.text.pdf.PdfCell;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.lowagie.text.HeaderFooter;
 import static ictproject.JDBCConnection.conn;
 import static ictproject.JDBCConnection.converter;
 import static ictproject.JDBCConnection.getDistinctResult;
@@ -69,13 +71,12 @@ public class ReportGenerator {
          document.add( Chunk.NEWLINE );
          document.add(getParagraph(selected,"janajatiAnusar"));
          document.add(janajatiAnusar(selected));
- 
-         document.newPage();
-
          document.add(getParagraph(selected,"pani ko sroth"));
          document.add(getPaniKoSroth(selected));
-         
+            
           document.newPage();
+          document.add(getParagraph(selected, "name"));
+
           document.add(getParagraph(selected,"actual budget"));
           document.add(actualBudget(selected,"actualBudget"));
           document.add( Chunk.NEWLINE );
@@ -85,11 +86,13 @@ public class ReportGenerator {
           
          document.setPageSize(PageSize.A4.rotate());
          document.newPage();
+         document.add(getParagraph(selected, "name"));
          document.add(getParagraph(selected,"sauchalayKoAwasta"));
          document.add(sauchalayKoAwasta(selected));
          
          
           document.newPage();
+          document.add(getParagraph(selected, "name"));
           document.add(getParagraph(selected,"pani janya rog ko bibaran"));
           document.add(rogKoBibaran(selected));
           
@@ -342,7 +345,6 @@ public class ReportGenerator {
             table.addCell(numberConverterToUnicode(rs.getString("noSmokeGas")));
             table.addCell(numberConverterToUnicode(rs.getString("noSmokeWard")));
             table.addCell(getNepaliPhrase(converter(rs.getString("remarks"))));
-          System.out.println("date"+converter(rs.getString("bhakonaDate").replace("-", "÷")).replace("247", "÷"));
       }
 
         }  
@@ -437,6 +439,11 @@ public class ReportGenerator {
                 para.add(para1);
                 para.add(para3);
                 para.add(para4);
+                return para;
+            }
+            case "name":{
+                Paragraph para=new Paragraph(converter(name),fontNormal);
+                para.setAlignment(Element.ALIGN_CENTER);
                 return para;
             }
             
