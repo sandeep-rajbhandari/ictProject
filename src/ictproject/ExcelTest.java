@@ -54,8 +54,8 @@ public class ExcelTest {
         WritableSheet excelSheet1 = workbook.getSheet(0);
         mergeCells(excelSheet1,1);
         createLabels(excelSheet1, name,1);
-        addContent("SELECT * from  janajatianusarkogharduri where name='" + name + "'", excelSheet1, 11, janajatiAnusar);
-        addContent("SELECT * from  bidamanpanikosrot where name='" + name + "'", excelSheet1, 25, paniKaShrot);
+        addContent("SELECT * from  janajatianusarkogharduri where name='" + name + "'", excelSheet1, 11, JANAJATIANUSAR);
+        addContent("SELECT * from  bidamanpanikosrot where name='" + name + "'", excelSheet1, 25, PANIkASHROT);
         workbook.createSheet("Part2", 1);
         WritableSheet excelSheet2 = workbook.getSheet(1);
         mergeCells(excelSheet2,2);

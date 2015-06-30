@@ -150,10 +150,10 @@ public class ActualBudget extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        List<String> year=new ArrayList<String>();
-        year.add("cf=j @)^(÷&)");
-        year.add("cf=j @)&)÷&!");
-        year.add("cf=j @)&!÷&@");
+//        List<String> year=new ArrayList<String>();
+//        year.add("cf=j @)^(÷&)");
+//        year.add("cf=j @)&)÷&!");
+//        year.add("cf=j @)&!÷&@");
         DefaultTableModel model=(DefaultTableModel)jTable1.getModel();
         String gabisaName=gabisaKoNaamBox.getText();
         Double gabisaKoLagani=Double.parseDouble(converter(gabisaKoJammaLaganiBox.getText()));
@@ -164,7 +164,7 @@ public class ActualBudget extends javax.swing.JFrame {
          Double khanepani=model.getValueAt(i,1)==null?0:Double.parseDouble(model.getValueAt(i,1).toString());
          Double sarSafai=model.getValueAt(i,2)==null?0:Double.parseDouble(model.getValueAt(i,2).toString());
         
-         updateemp.setString(1,year.get(i));
+        updateemp.setString(1,model.getValueAt(i, 0).toString());
         updateemp.setString(2,model.getValueAt(i,3)==null?"":model.getValueAt(i,3).toString());
         updateemp.setString(3,gabisaName);
         updateemp.setDouble(4,khanepani);

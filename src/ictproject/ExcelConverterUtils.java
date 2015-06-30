@@ -34,8 +34,13 @@ import jxl.write.biff.RowsExceededException;
  */
 public class ExcelConverterUtils {
 
-    public static final List<String> paniKaShrot = Arrays.asList("serialNo", "wardNo", "paniKoSrotCount", "", "", "", "pokharicount", "remarks");
-    public static final List<String> janajatiAnusar = Arrays.asList(
+    public static final List<String> PANIkASHROT = Arrays.asList("serialNo", "wardNo", "paniKoSrotCount", "", "", "", "pokharicount", "remarks");
+    public static final List<String> ACTUALBUDGET = Arrays.asList("arthikBarsa","remarks","khanePani","sarSafai","total");
+    public static final List<String> EXPECTEDBUDGET = Arrays.asList("arthikBarsa","remarks","khanePani","sarSafai","total");
+    public static final List<String> PANIKOROG = Arrays.asList("SNo","diseaseName","year6970","year7071","year7172","remarks");
+    public static final List<String> SAUCHALAYAKOAWASTA = Arrays.asList("sno","wardNo","temporaryToilet","permanentToilet","noToilet","bhakonaBhako",
+            "bhakonaDate","urineSeperation","urineManure","bioGasUse","noSmokeGas","noSmokeWard","remarks");
+    public static final List<String> JANAJATIANUSAR = Arrays.asList(
             "sno", "wardNo", "dalit", "adiwsi", "muslim", "anya", "jamma", "remarks");
 
     public static void mergeCells(WritableSheet excelSheet, int page) throws IOException, WriteException {
@@ -92,6 +97,15 @@ public class ExcelConverterUtils {
 
             }
 
+        }
+        
+        if(page==3){
+            //५. शौचालयको अवस्था
+            excelSheet.mergeCells(0,1, 12, 1);
+            excelSheet.mergeCells(0,3, 0, 4);
+            excelSheet.mergeCells(1,3, 1, 4);
+            excelSheet.mergeCells(2,3, 4, 3);
+            excelSheet.mergeCells(5,3, 6, 3);
         }
 
     }
@@ -150,6 +164,27 @@ public class ExcelConverterUtils {
             createLabel(excelSheet, "बर्ष (२०७१/७२)", 6, 21);
             createLabel(excelSheet, "कैफियत", 7, 21);
 
+
+        }
+        if(page==3){
+            //५. शौचालयको अवस्था
+            							
+           createLabel(excelSheet, "५. शौचालयको अवस्था", 0, 18);
+           createLabel(excelSheet, "सि.नं.", 0, 18);
+           createLabel(excelSheet, "वडा नं.", 0, 18);
+           createLabel(excelSheet, "शौचालयका विवरण", 0, 18);
+           createLabel(excelSheet, "अस्थायी चर्पी संख्या", 0, 18);
+           createLabel(excelSheet, "स्थायी चर्पी संख्या", 0, 18);
+           createLabel(excelSheet, "चर्पी नभएको संख्या", 0, 18);
+           createLabel(excelSheet, "खुल्ला दिसामूक्त घोषण", 0, 18);
+           createLabel(excelSheet, "भएको÷नभएको", 0, 18);
+           createLabel(excelSheet, "भएका भए मिति", 0, 18);
+           createLabel(excelSheet, "पिसाब अलग गर्ने गरेका धरधुरी संख्या", 0, 18);
+           createLabel(excelSheet, "बायो ग्यास चर्पी प्रयोग  गर्ने धरधुरी संख्या", 0, 18);
+           createLabel(excelSheet, "पिसाब मल प्रयोग  गर्ने धरधुरी संख्या", 0, 18);
+           createLabel(excelSheet, "धुँवारहित चुल्हो भएको घर संख्या", 0, 18);
+           createLabel(excelSheet, "धुँवारहित चुल्हो भएको घर संख्या", 0, 18);
+           createLabel(excelSheet, "कैफियत", 0, 18);
 
         }
     }
