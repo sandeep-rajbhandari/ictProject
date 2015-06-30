@@ -6,6 +6,11 @@
 package ictproject;
 
 import static ictproject.JDBCConnection.getDisticts;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import jxl.write.WriteException;
 
 /**
  *
@@ -96,8 +101,19 @@ String selected;
 
     private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
         // TODO add your handling code here:
-        ReportGenerator reportGenerator=new ReportGenerator();
-        reportGenerator.writer(selected);
+//        ReportGenerator reportGenerator=new ReportGenerator();
+//        reportGenerator.writer(selected);
+        ExcelTest excelTest=new ExcelTest();
+        excelTest.setOutputFile("E:"+selected+".xls");
+        try{
+        excelTest.write(selected);
+        }catch(SQLException se){
+            se.printStackTrace();
+        } catch (IOException ex) {
+        Logger.getLogger(PopUpForDistrictSelection.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (WriteException ex) {
+        Logger.getLogger(PopUpForDistrictSelection.class.getName()).log(Level.SEVERE, null, ex);
+    }
         dispose();
     }//GEN-LAST:event_okActionPerformed
 
