@@ -48,9 +48,9 @@ public class ExpectedBudget extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"आ.व २०६९/७०	", null, null, null},
-                {"आ.व २०७०/७१	", null, null, null},
-                {"आ.व २०७१/७२", null, null, null}
+                {"आ.व २०७१/७२	", null, null, null},
+                {"आ.व २०७२/७३	", null, null, null},
+                {"आ.व २०७३/७४", null, null, null}
             },
             new String [] {
                 "आर्थिक वर्ष", "खानेपानी(रुपैया)", "सरसफाइ(रुपैया)", "कैफियत"

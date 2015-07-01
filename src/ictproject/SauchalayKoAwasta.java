@@ -79,7 +79,6 @@ public class SauchalayKoAwasta extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
             jTable1.getColumnModel().getColumn(1).setMaxWidth(50);
             jTable1.getColumnModel().getColumn(5).setResizable(false);
-            jTable1.getColumnModel().getColumn(12).setResizable(false);
         }
 
         jButton1.setText("OK");
@@ -145,9 +144,8 @@ public class SauchalayKoAwasta extends javax.swing.JFrame {
         for(int i=0;i<9;i++){
         try{
         PreparedStatement updateemp = JDBCConnection.conn.prepareStatement
-        ("insert into  sauchalaykoawasta(sno,wardNo,temporaryToilet,permanentToilet,noToilet,bhakonaBhako,bhakonaDate,urineSeperation,urineManure,bioGasUse,noSmokeGas,noSmokeWard,remarks,name) "
+        ("insert into  sauchalaykoawasta(sno,wardNo,temporaryToilet,permanentToilet,noToilet,bhakonaBhako,bhakonaDate,urineSeperation,urineManure,bioGasUse,noSmokeGas,noSmokeWard,remarks,name)"
                 + "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-
         updateemp.setInt(1,Integer.parseInt(model.getValueAt(i,0).toString()));
         updateemp.setInt(2,Integer.parseInt(model.getValueAt(i,1).toString()));
         updateemp.setInt(3,model.getValueAt(i,2)==null?0:Integer.parseInt(model.getValueAt(i,2).toString()));
@@ -159,7 +157,7 @@ public class SauchalayKoAwasta extends javax.swing.JFrame {
         updateemp.setInt(9,model.getValueAt(i,8)==null?0:Integer.parseInt(model.getValueAt(i,8).toString()));
         updateemp.setInt(10,model.getValueAt(i,9)==null?0:Integer.parseInt(model.getValueAt(i,9).toString()));
         updateemp.setInt(11,model.getValueAt(i,10)==null?0:Integer.parseInt(model.getValueAt(i,10).toString()));
-        updateemp.setInt(12,model.getValueAt(i,11)==null?0:Integer.parseInt(model.getValueAt(i,11).toString()));
+        updateemp.setString(12,model.getValueAt(i,11)==null?"":model.getValueAt(i,11).toString());
         updateemp.setString(13,model.getValueAt(i,12)==null?"":model.getValueAt(i,12).toString());
         updateemp.setString(14,gabisaName);
         
