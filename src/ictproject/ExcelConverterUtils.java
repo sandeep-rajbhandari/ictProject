@@ -39,12 +39,12 @@ public class ExcelConverterUtils {
     public static final List<String> PANIkASHROT = Arrays.asList("serialNo", "wardNo", "paniKoSrotCount", "", "", "", "pokharicount", "remarks");
     public static final List<String> ACTUALBUDGET = Arrays.asList("arthikBarsa","","khanePani","","sarSafai","","total","remarks");
     public static final List<String> EXPECTEDBUDGET = Arrays.asList("arthikBarsa","","khanePani","","sarSafai","","total","remarks");
-    public static final List<String> PANIKOROG = Arrays.asList("SNo","diseaseName","year6970","year7071","year7172","remarks");
+    public static final List<String> PANIKOROG = Arrays.asList("SNo","diseaseName","","","year6970","year7071","year7172","remarks");
     public static final List<String> SAUCHALAYAKOAWASTA = Arrays.asList("sno","wardNo","temporaryToilet","permanentToilet","noToilet","bhakonaBhako",
             "bhakonaDate","urineSeperation","urineManure","bioGasUse","noSmokeGas","noSmokeWard","remarks");
     public static final List<String> JANAJATIANUSAR = Arrays.asList(
             "sno", "wardNo", "dalit", "adiwsi", "muslim", "anya", "jamma", "remarks");
-    private static final List<String>STRINGLIST=Arrays.asList("remarks","arthikBarsa","bhakonaBhako","bhakonaDate");
+    private static final List<String>STRINGLIST=Arrays.asList("remarks","arthikBarsa","bhakonaBhako","bhakonaDate","diseaseName");
     
     public static final Map<String,Integer>JANAJATIANUSARKOGHARDURIJAMMA=new HashMap<String, Integer>(){{
     put("SUM(C12:C20)",2);
@@ -76,15 +76,15 @@ public class ExcelConverterUtils {
     public static final  Map<String,Integer>SAUCHALAYKOAWATAJAMMA=new HashMap<String, Integer>(){{
         put("",1);
         put("SUM(C6:C14)",2);
-        put("SUM(D14:D16)",3);
-        put("SUM(E14:E16)",4);
+        put("SUM(D6:D14)",3);
+        put("SUM(E6:E14)",4);
         put(" ",5);        
         put("  ",6);        
-        put("SUM(H14:H16)",7);
-        put("SUM(I14:I16)",8);
-        put("SUM(J14:J16)",9);
-        put("SUM(K14:K16)",10);
-        put("SUM(L14:L16)",11);
+        put("SUM(H6:H14)",7);
+        put("SUM(I6:I14)",8);
+        put("SUM(J6:J14)",9);
+        put("SUM(K6:K14)",10);
+        put("SUM(L6:L14)",11);
         put("   ",12);
     }
     };
@@ -146,7 +146,7 @@ public class ExcelConverterUtils {
             //४. पानीजन्य रोगहरुको विवरण ः
             excelSheet.mergeCells(0, 18, 7, 18);
             excelSheet.mergeCells(0, 19, 7, 19);
-            for (int i = 21; i <= 30; i++) {
+            for (int i = 21; i <= 31; i++) {
                 excelSheet.mergeCells(1, i, 3, i);
 
             }
@@ -306,7 +306,7 @@ public class ExcelConverterUtils {
                             sheet.addCell(new Number(fields.indexOf(field), row, Integer.parseInt(rs.getString(field)), cellFormat));
                             if(field.equalsIgnoreCase("khanepani")){
                                khanepani+=Integer.parseInt(rs.getString(field)); 
-                               gabisaKoLagani=rs.getString("gabisaKoLagani");
+                               gabisaKoLagani+=rs.getString("gabisaKoLagani");
                             }else if(field.equalsIgnoreCase("sarSafai")){
                                 sarsafai+=Integer.parseInt(rs.getString(field));
                             }
